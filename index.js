@@ -129,10 +129,7 @@ client.on('message', message => {
   .setDescription('**:white_check_mark: Added Role • Fortnite** ')
     .setFooter(`• Requested By: ${message.author.tag}`);
   message.channel.sendEmbed(embed);
-  
-    });
-
-  }
+   }
 });
 client.on('message', message => {
   var thatRole = message.guild.roles.find('name', '• MineCraft');
@@ -144,11 +141,7 @@ client.on('message', message => {
   .setDescription('**:white_check_mark: Added Role • Rocket League** ')
     .setFooter(`• Requested By: ${message.author.tag}`);
   message.channel.sendEmbed(embed);
-	 
-   
-    });
-
-  }
+ }
 });
 client.on('message', message => {
   var thatRole = message.guild.roles.find('name', '• Rocket League');
@@ -160,10 +153,7 @@ client.on('message', message => {
   .setDescription('**:white_check_mark: Added Role • Rocket League** ')
     .setFooter(`• Requested By: ${message.author.tag}`);
   message.channel.sendEmbed(embed);
-	
-    });
-
-  }
+ }
 });
 client.on('message', function(message) {
   if(message.content.startsWith(prefix + "count")) {
