@@ -1347,13 +1347,6 @@ if(warns[wUser.id].warns == 2){
 		message.channel.send(warninfo1);
 		message.delete();
 	   }
-              });
-            });
-          });
-        });
-      });
-    });
-  }
 });
 client.on('message',async message => {
   var time = moment().format('Do MMMM YYYY , hh:mm');
