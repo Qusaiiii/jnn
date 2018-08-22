@@ -1183,6 +1183,7 @@ const zead = [
    message.react("??")
   }
 });
+client.on('message', message => {
   let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
     if(command == prefix + 'warn') {
     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('\`\`MANAGE_MESSAGES\`\` **انت لا تمتلك صلاحية**').then(msg => msg.delete(5000));
