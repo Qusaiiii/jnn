@@ -29,7 +29,7 @@ client.on('message', message => {
      if (message.content === "Developer") {
       const embed = new Discord.RichEmbed()
   .setColor("RANDOM")
-  .setDescription('**Our Developers** n/ `! ʚɞ EpicYouseeF ₁₆`n/ `ImRoyal_Raddar`')
+  .setDescription('**Our Developers** \n `iAmHeRo¹⁵ ☤`\n `ImRoyal_Raddar`')
   message.channel.sendEmbed(embed);
     }
 });
@@ -228,7 +228,7 @@ client.on('message', msg => {
 });
 client.on('message', message => {
 if(message.content === 'ارحب') {
-  message.channel.send('**`أهلا بك في سيرفر في سيرفر هايبد نتمنى لك احلى الاوقات`**')
+  message.channel.send('**`أهلا بك في سيرفر هايبد نتمنى لك احلى الاوقات`**')
  }
 });
 const hastebin = require('hastebin-gen');
@@ -889,6 +889,119 @@ if (message.content.startsWith(prefix + 'setstreaming')) {
 }
 
 });
+client.on('message', function(message) {
+    if(message.content.startsWith('!roll')) {
+        let args = message.content.split(" ").slice(1);
+        if (!args[0]) {
+            message.channel.send('**حط رقم معين يتم السحب منه**');
+            return;
+            }
+    message.channel.send(Math.floor(Math.random() * args.join(' ')));
+            if (!args[0]) {
+          message.edit('1')
+          return;
+        }
+    }
+});
+  client.on('message', message => {
+if(message.content.startsWith("!slots")) {
+  let slot1 = ['🍏', '🍇', '🍒', '🍍', '🍅', '🍆', '🍑', '🍓'];
+  let slots1 = `${slot1[Math.floor(Math.random() * slot1.length)]}`;
+  let slots2 = `${slot1[Math.floor(Math.random() * slot1.length)]}`;
+  let slots3 = `${slot1[Math.floor(Math.random() * slot1.length)]}`;
+  let we;
+  if(slots1 === slots2 && slots2 === slots3) {
+    we = " : ** لقد فزت   ** ."
+  } else {
+    we = ": ** لقد خسرت ! ** ."
+  }
+  message.channel.send(`${slots1} | ${slots2} | ${slots3} - ${we}`)
+}
+});
+client.on('message', message => {
+if (message.content.startsWith('-help')) { /// This is The DMS Code Send The Help In DMS // Code By NotGucci
+    let pages = [`
+╭╮╱╭╮╱╱╱╱╱╱╱╱╱╱╱╭╮
+┃┃╱┃┃╱╱╱╱╱╱╱╱╱╱╱┃┃
+┃╰━╯┣╮╱╭┳━━┳━━┳━╯┃
+┃╭━╮┃┃╱┃┃╭╮┃┃━┫╭╮┃
+┃┃╱┃┃╰━╯┃╰╯┃┃━┫╰╯┃
+╰╯╱╰┻━╮╭┫╭━┻━━┻━━╯
+╱╱╱╱╭━╯┃┃┃
+╱╱╱╱╰━━╯╰╯
+
+**الأوامر العامة **
+**!mc : لاخذ رتبت ماين كرافت **
+**!id : الهوية **
+**!slots : Slots Game **
+**!topinv : لرؤية المتصدرين فالدعوات**
+**!discrim : لرؤية الاشخاص الذين لديهم نفس التاق **
+**!fortnite : لاخذ رتبت فورت نايت **
+**!nick : لتغير اسمك فالسيرفر **	 
+**!تقيم : for give a rate **
+**!rocketleague : لاخذ رتبت روكت ليق **
+**!count : لرؤية عدد اعضاء السيرفر  **
+**!play : لمعرفة معلومات رتبة معينة **
+**!مريم : Mariam game **
+**!avatar : لروية صورتك **
+**!كت تويت : Cut-Tweet**
+**!امثال : A Game : $ **
+		 
+		 
+**اوامر ادارة السيرفر **
+**/mute **
+**/unmute **
+**!clear **
+**!bc **
+**!role **
+**!warn**
+**!ban **
+**!kick **
+ '
+,'
+   ','
+   `]
+    let page = 1;
+
+    let embed = new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .setFooter(`Page ${page} of ${pages.length}`)
+    .setDescription(pages[page-1])
+
+    message.author.sendEmbed(embed).then(msg => {
+
+        msg.react('◀').then( r => {
+            msg.react('▶')
+
+
+        const backwardsFilter = (reaction, user) => reaction.emoji.name === '◀' && user.id === message.author.id;
+        const forwardsFilter = (reaction, user) => reaction.emoji.name === '▶' && user.id === message.author.id;
+
+
+        const backwards = msg.createReactionCollector(backwardsFilter, { time: 2000000});
+        const forwards = msg.createReactionCollector(forwardsFilter, { time: 2000000});
+
+
+
+        backwards.on('collect', r => {
+            if (page === 1) return;
+            page--;
+            embed.setDescription(pages[page-1]);
+            embed.setFooter(`Page ${page} of ${pages.length}`);
+            msg.edit(embed)
+        })
+        forwards.on('collect', r => {
+            if (page === pages.length) return;
+            page++;
+            embed.setDescription(pages[page-1]);
+            embed.setFooter(`Page ${page} of ${pages.length}`);
+            msg.edit(embed)
+        })
+        })
+    })
+    }
+}); 
+
 client.on('message', async message =>{
   var prefix = "/";
 
@@ -960,7 +1073,7 @@ client.on('message', message => {
   if (!message.content.startsWith(prefix)) return;
   var args = message.content.split(' ').slice(1);
   var argresult = args.join(' ');
-  if (message.author.id !== '323885452207587329') return;
+  if (message.author.id !== '475396751549792277') return;
 
 if (message.content.startsWith(prefix + 'setplaying')) {
   client.user.setGame(argresult);
