@@ -30,7 +30,7 @@ client.on('message', message => {
      if (message.content === "Developer") {
       const embed = new Discord.RichEmbed()
   .setColor("RANDOM")
-  .setDescription('**Our Developers** n/ `! ʚɞ EpicYouseeF'₁₆`n/ `ImRoyal_Raddar`')
+  .setDescription('**Our Developers** n/ `! ʚɞ EpicYouseeF ₁₆`n/ `ImRoyal_Raddar`')
   message.channel.sendEmbed(embed);
     }
 });
