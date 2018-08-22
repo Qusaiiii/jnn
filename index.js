@@ -416,7 +416,7 @@ const ee =new Discord.RichEmbed()
                 
                      const e = new Discord.RichEmbed()
                      
-                 .setDescription('<a:success:472974981496700928> ** Changed Roles For **'+member+'**,** '+'**'+'-'+role1.name+'**')
+                 .setDescription(':white_check_mark:** Changed Roles For **'+member+'**,** '+'**'+'-'+role1.name+'**')
                 .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
                 .setColor('BLACK')
                  message.channel.send(e)
