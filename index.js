@@ -124,6 +124,7 @@ client.on('message', message => {
     var thatRole = message.guild.roles.find('name', '• Fortnite');
     if(message.member.roles.has(thatRole)) return;
     if(message.content.split(' ')[0] !== prefix + "fortnite") return;
+	  message.member.addRole(thatRole).catch(e => errors++);
     const embed = new Discord.RichEmbed()
   .setColor("RANDOM")
   .setDescription('**:white_check_mark: Added Role • Fortnite** ')
@@ -136,9 +137,10 @@ client.on('message', message => {
   if(message.content.startsWith(prefix + "mc")) {
     if(message.member.roles.has(thatRole)) return;
     if(message.content.split(' ')[0] !== prefix + "mc") return;
+	  message.member.addRole(thatRole).catch(e => errors++);
     const embed = new Discord.RichEmbed()
   .setColor("RANDOM")
-  .setDescription('**:white_check_mark: Added Role • Rocket League** ')
+  .setDescription('**:white_check_mark: Added Role • MineCraft** ')
     .setFooter(`• Requested By: ${message.author.tag}`);
   message.channel.sendEmbed(embed);
  }
@@ -148,6 +150,7 @@ client.on('message', message => {
   if(message.content.startsWith(prefix + "rocketleague")) {
     if(message.member.roles.has(thatRole)) return;
     if(message.content.split(' ')[0] !== prefix + "rocketleague") return;
+	  message.member.addRole(thatRole).catch(e => errors++);
     const embed = new Discord.RichEmbed()
   .setColor("RANDOM")
   .setDescription('**:white_check_mark: Added Role • Rocket League** ')
@@ -204,7 +207,7 @@ client.on('message', msg => {
 });
 client.on('message', message => {
 if(message.content === 'ارحب') {
-  message.channel.send('**أهلا بك في سيرفر في سيرفر هايبد نتمنى لك احلى الاوقات**')
+  message.channel.send('**`أهلا بك في سيرفر في سيرفر هايبد نتمنى لك احلى الاوقات`**')
  }
 });
 const hastebin = require('hastebin-gen');
@@ -394,49 +397,122 @@ client.on('message', message => {
       message.channel.sendEmbed(embed);
     }
 });
- client.on('message',message => {
-	     if (!message.content.startsWith(prefix)) return;
-var cont = message.content.slice(prefix.length).split(" ");
-
-  var args = cont.slice(1);
-	   if (message.content.startsWith("!role")) {
-    if (message.member.permissions.has("MANAGE_ROLES")) {
-        if (message.mentions.users.size === 0) {
-            let role = message.guild.roles.find("name", args.slice(0).join(" "))
-            if (args[0] === undefined) { message.channel.send("**ضع اسم الرتبة**"); return; }
-            if (!role) { message.channel.send("**لاتوجد هذه الرتبة**"); return; }
-            if (message.guild.owner.id !== message.author.id) {
-                if (role.position >= message.member.highestRole.position) { message.channel.send("**لاتستطيع اعطاء نفسك رتبة اعلى من رتبتك الحالية**"); return; }}
-            if (message.member.roles.has(role.id)) { message.channel.send("You already have that role!"); return; }
-
-            message.member.addRole(role).catch(err => {
-                message.channel.send("Error: " + err)
-                return;
-            })
-            message.channel.send(":white_check_mark: **Added role** " + role.name + "**.**")
-            return;
-
-        } else {
-            let memberMention = message.mentions.members.first()
-            let role = message.guild.roles.find("name", args.slice(1).join(" "))
-            if (args[1] === undefined) { message.channel.send("**ضع اسم الرتبة**"); return; }
-            if (!role) { message.channel.send("**لاتوجد هذه الرتبة**"); return; }
-            if (message.guild.owner.id !== message.author.id) {
-                if (role.position >= message.member.highestRole.position) { message.channel.send("**:x: لاتستطيع اعطاء رتبة اعلى من رتبتك لشخص اخر**"); return; }}
-            if (memberMention.roles.has(role.id)) { message.channel.send("**:x: هذا الشخص بالفعل لديه الرتبة**"); return; }
-
-            memberMention.addRole(role).catch(err => {
-                message.channel.send("Error: " + err)
-                return;
-            })
-	   message.channel.send(":white_check_mark: **Changed roles for** " + memberMention.toString() + "** ,+**" + role.name + "**.**")
-    
+ client.on('message', message => {
+    let args = message.content.split(' ').slice(1);
+    if(message.content.startsWith(prefix + 'role')) {
+        let member = message.mentions.users.first();
+        let role = args.join(' ').replace(member, '').replace(args[0], '').replace(' ', '');
+        console.log(role);
+        if(member) {
+              if(role.startsWith('-')) {
+                let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
+                console.log(roleRe);
+                let role1 = message.guild.roles.find('name', roleRe);
+                console.log(`hi`);
+const ee =new Discord.RichEmbed()
+ .setDescription('I Cann’t Find This Role')
+ .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
+        if(!role1) return message.channel.send(ee);                message.guild.member(member).removeRole(role1.id);
+                
+                     const e = new Discord.RichEmbed()
+                     
+                 .setDescription('<a:success:472974981496700928> ** Changed Roles For **'+member+'**,** '+'**'+'-'+role1.name+'**')
+                .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
+                .setColor('BLACK')
+                 message.channel.send(e)
+            } else if(!role.startsWith('-')) {
+                let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
+                let role1 = message.guild.roles.find('name', roleRe);
+const ee =new Discord.RichEmbed()
+ .setDescription('I Cann’t Find This Role')
+ .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
+        if(!role1) return message.channel.send(ee);                message.guild.member(member).addRole(role1);
+                const e = new Discord.RichEmbed()
+                
+                .setDescription('<a:success:472974981496700928> ** Changed Roles For **'+member+'**,** '+'**'+'+'+role1.name+'**')
+                .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
+                .setColor('BLACK')
+                 message.channel.send(e)
+            } else {
+                message.reply(`يجب عليك كتابة اسم الرتبة`);
+            } 
         }
-    } 
+ else if(args[0] == 'all') {
+  if(role.startsWith('-')) { 
+       let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
+         let role1 = message.guild.roles.find('name', roleRe);
+                   message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg =>{
+           message.guild.members.forEach(m => {
+            message.guild.member(m).removeRole(role1.id);
+        });
+         msg.edit(`** <a:like:472979723358699520>  Done...\n**` +role1.name+`** Has Taken From __${message.guild.members.size}__ Member**`);
+    });
+  }
+    if(role) {
+    let role1 = message.guild.roles.find('name', role);
+    if(!role1) return;
+    message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg => {
+        message.guild.members.forEach(m => {
+            message.guild.member(m).addRole(role1);
+        });
+        msg.edit(`** <a:like:472979723358699520>  Done...\n**` +  role1.name+`** Has Given To __${message.guild.members.size}__ Members **`);
+    });
+}
+} else if(args[0] == 'humans') {
+     if(role.startsWith('-')) { 
+       let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
+         let role1 = message.guild.roles.find('name', roleRe);
+                   message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg =>{
+           message.guild.members.forEach(m => {
+            message.guild.member(m).removeRole(role1.id);
+        });
+         msg.edit(`** <a:like:472979723358699520>  Done...\n**` +role1.name+`** Has Taken From __${message.guild.members.size}__ Member**`);
+    });
+  }
+
+    if(role) {
+        let role1 = message.guild.roles.find('name', role);
+
+ const ee =new Discord.RichEmbed()
+ .setDescription('I Cann’t Find This Role')
+ .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
+        if(!role1) return message.channel.send(ee);
+        message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg => {
+            message.guild.members.filter(m =>m.user.bot == false).forEach(m => {
+                message.guild.member(m).addRole(role1);
+            });
+        msg.edit(`** <a:like:472979723358699520>  Done...**`);
+        });
     }
+} else if(args[0] == 'bots') {
+     if(role.startsWith('-')) { 
+       let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
+         let role1 = message.guild.roles.find('name', roleRe);
+                   message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg =>{
+           message.guild.members.forEach(m => {
+            message.guild.member(m).removeRole(role1.id);
+        });
+         msg.edit(`** <a:like:472979723358699520>  Done...**`);
+    });
+  }
+    if(role) {
+        let role1 = message.guild.roles.find('name', role);
+       const ee =new Discord.RichEmbed()
+ .setDescription('I Cann’t Find This Role')
+ .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
+        if(!role1) return message.channel.send(ee);
+        message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg => {
+            message.guild.members.filter(m =>m.user.bot == true).forEach(m => {
+                message.guild.member(m).addRole(role1);
+            });
+        msg.edit(`** <a:like:472979723358699520>  Done...\n**` +role1.name+`** Has Given To __${message.guild.members.size}__ Member**`);
+});
+}
+}
+}
 });
  client.on('message', message => {
-    if (message.content.startsWith("-id")) {
+    if (message.content.startsWith("!id")) {
 var args = message.content.split(" ").slice(1);
 let user = message.mentions.users.first();
 var men = message.mentions.users.first();
