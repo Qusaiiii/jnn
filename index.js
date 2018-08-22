@@ -17,10 +17,6 @@ const queue = new Map();
 const prefix = "!";
 const p = "-";
 var errors = 0;
-var args = message.content.split(' ');
-	var args1 = message.content.split(' ').slice(1).join(' ');
-	var args2 = message.content.split(' ')[2];
-	var args3 = message.content.split(' ').slice(3).join(' ');
 client.on('message', message => {
      if (message.content === "سلام عليكم") {
       const embed = new Discord.RichEmbed()
@@ -1187,7 +1183,10 @@ const zead = [
   }
 });
 client.on('message', message => {
-
+var args = message.content.split(' ');
+	var args1 = message.content.split(' ').slice(1).join(' ');
+	var args2 = message.content.split(' ')[2];
+	var args3 = message.content.split(' ').slice(3).join(' ');
 	var command = message.content.toLowerCase().split(" ")[0];
   let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
     if(command == prefix + 'warn') {
