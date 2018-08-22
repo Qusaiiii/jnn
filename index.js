@@ -864,10 +864,11 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return mess
 });
 
 client.on('message', message => {
-  if (!message.content.startsWith(prefix)) return;
+	const devs = ['475396751549792277', '474172469566111745',
+	if (!message.content.startsWith(prefix)) return;
   var args = message.content.split(' ').slice(1);
   var argresult = args.join(' ');
-  if (message.author.id !== '474172469566111745','475396751549792277') return;
+ if(!devs.includes(message.author.id)) return;
 
 if (message.content.startsWith(prefix + 'setplaying')) {
   client.user.setGame(argresult);
@@ -919,7 +920,7 @@ if(message.content.startsWith("!slots")) {
 }
 });
 client.on('message', message => {
-if (message.content.startsWith('-help')) { /// This is The DMS Code Send The Help In DMS // Code By NotGucci
+if (message.content.startsWith('!help')) { /// This is The DMS Code Send The Help In DMS // Code By NotGucci
     let pages = [`
 ╭╮╱╭╮╱╱╱╱╱╱╱╱╱╱╱╭╮
 ┃┃╱┃┃╱╱╱╱╱╱╱╱╱╱╱┃┃
