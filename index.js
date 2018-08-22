@@ -864,7 +864,7 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return mess
 });
 
 client.on('message', message => {
-	const devs = ['475396751549792277', '474172469566111745',
+	const devs = ['475396751549792277', '474172469566111745'];
 	if (!message.content.startsWith(prefix)) return;
   var args = message.content.split(' ').slice(1);
   var argresult = args.join(' ');
