@@ -867,7 +867,7 @@ client.on('message', message => {
   if (!message.content.startsWith(prefix)) return;
   var args = message.content.split(' ').slice(1);
   var argresult = args.join(' ');
-  if (message.author.id !== '474172469566111745') return;
+  if (message.author.id !== '474172469566111745','475396751549792277') return;
 
 if (message.content.startsWith(prefix + 'setplaying')) {
   client.user.setGame(argresult);
@@ -941,7 +941,8 @@ if (message.content.startsWith('-help')) { /// This is The DMS Code Send The Hel
 **!تقيم : for give a rate **
 **!rocketleague : لاخذ رتبت روكت ليق **
 **!count : لرؤية عدد اعضاء السيرفر  **
-**!play : لمعرفة معلومات رتبة معينة **
+**!play : Music **
+**!roll : Roll **
 **!مريم : Mariam game **
 **!avatar : لروية صورتك **
 **!كت تويت : Cut-Tweet**
@@ -1069,32 +1070,7 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return mess
   }
 
 });
-client.on('message', message => {
-  if (!message.content.startsWith(prefix)) return;
-  var args = message.content.split(' ').slice(1);
-  var argresult = args.join(' ');
-  if (message.author.id !== '475396751549792277') return;
 
-if (message.content.startsWith(prefix + 'setplaying')) {
-  client.user.setGame(argresult);
-    message.channel.sendMessage(`**:white_check_mark:  : ${argresult}**`)
-} else 
-
-if (message.content.startsWith(prefix + 'setwatching')) {
-client.user.setActivity(argresult, {type:'WATCHING'});
-    message.channel.sendMessage(`**:white_check_mark:  : ${argresult}**`)
-} else 
-if (message.content.startsWith(prefix + 'setlistening')) {
-client.user.setActivity(argresult, {type:'LISTENING'});
-    message.channel.sendMessage(`**:white_check_mark:  : ${argresult}**`)
-} else 
-
-if (message.content.startsWith(prefix + 'setstreaming')) {
-  client.user.setGame(argresult, "https://www.twitch.tv/Justin-Ly0001");
-    message.channel.sendMessage(`**:white_check_mark:  : ${argresult}**`)
-}
-
-});
  client.on('message', message => { 
 if(message.content.startsWith(prefix + 'sug')) {
       if(!message.channel.guild) return message.reply(`هذا الأمر فقط ل السيرفرات :x:`);
