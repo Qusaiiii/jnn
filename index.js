@@ -1346,7 +1346,15 @@ if(warns[wUser.id].warns == 2){
 		.setFooter(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
 		message.channel.send(warninfo1);
 		message.delete();
-	};
+	   }
+              });
+            });
+          });
+        });
+      });
+    });
+  }
+});
 client.on('message',async message => {
   var time = moment().format('Do MMMM YYYY , hh:mm');
   var room;
