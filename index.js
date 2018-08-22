@@ -129,7 +129,7 @@ client.on('message', message => {
   .setDescription('**:white_check_mark: Added Role • Fortnite** ')
     .setFooter(`• Requested By: ${message.author.tag}`);
   message.channel.sendEmbed(embed);
-
+ m.delete();
       },5000);
     });
 
@@ -145,6 +145,7 @@ client.on('message', message => {
   .setDescription('**:white_check_mark: Added Role • Rocket League** ')
     .setFooter(`• Requested By: ${message.author.tag}`);
   message.channel.sendEmbed(embed);
+	   m.delete();
       },5000);
     });
 
@@ -160,6 +161,7 @@ client.on('message', message => {
   .setDescription('**:white_check_mark: Added Role • Rocket League** ')
     .setFooter(`• Requested By: ${message.author.tag}`);
   message.channel.sendEmbed(embed);
+	   m.delete();
       },5000);
     });
 
@@ -219,7 +221,7 @@ if(message.content === 'ارحب') {
 });
 const hastebin = require('hastebin-gen');
 client.on('message', message => {
-var PREFIX = '-';
+var PREFIX = '!';
     if(message.content.startsWith(PREFIX + 'discrim')) {
             var args = message.content.split(' ').slice(1).join(' ');
 }
@@ -240,7 +242,7 @@ hastebin(`${array.slice(0, 30).join('\n')}`, 'txt').then(l => {
 }).catch(console.error);
 });
 client.on('message' , message => {
-var PREFIX = '-';
+var PREFIX = '!';
 if(message.content === `${PREFIX}discrim`) {
                       let array = [];
                       var i = 0;
@@ -258,7 +260,7 @@ hastebin(`${array.slice(0, 30).join('\n')}`, 'txt').then(l => {
         }
 });
 client.on('message', message => {
-var prefix = "-";
+var prefix = "!";
 
     if (message.author.id === client.user.id) return;
     if (message.guild) {
